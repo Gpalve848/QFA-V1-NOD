@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "runtime-qaf"
+version = "0.1.0"
+description = "Lightweight Runtime Quality Assessment Framework for cloud-native microservices"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.31",
+    "PyYAML>=6.0",
+    "numpy>=1.26",
+    "prometheus-client>=0.20",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+qaf = "qaf.cli:main"
+
+[tool.setuptools]
+packages = ["qaf"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

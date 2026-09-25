@@ -1,0 +1,13 @@
+node_modules/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.env
+.vscode/
+.idea/
+load-tests/results/*.json

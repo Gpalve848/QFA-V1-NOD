@@ -1,0 +1,73 @@
+# Runtime Quality Assessment Framework (QAF) configuration.
+# Override the Prometheus URL with the QAF_PROMETHEUS_URL environment variable.
+
+prometheus_url: http://localhost:9090
+job: microservices          # Prometheus job that scrapes the microservices
+
+collection:
+  rate_window: 1m           # window used inside rate() / avg_over_time()
+  lookback_seconds: 120     # how much history each assessment looks at
+  step_seconds: 10          # sample resolution inside the lookback
+
+preprocessing:
+  outlier_iqr_k: 1.5        # samples outside [Q1 - k*IQR, Q3 + k*IQR] are dropped as noise
+  aggregation: median       # median | mean | ewma
+  ewma_alpha: 0.3
+
+# Resource limits given to each container (docker-compose.yml) -- used to express
+# CPU and memory usage as a percentage of what the service is allowed to use.
+resources:
+  cpu_limit_cores: 0.5
+  memory_limit_mb: 256
+
+# Services under assessment. `weight` = business criticality in the system-level QI.
+services:
+  user:    { url: http://localhost:3001, weight: 0.15 }
+  product: { url: http://localhost:3002, weight: 0.20 }
+  order:   { url: http://localhost:3003, weight: 0.35 }
+  payment: { url: http://localhost:3004, weight: 0.30 }
+
+# Metric normalisation (threshold-based min-max). A value at or better than `good`
+# scores 100, at or worse than `bad` scores 0, linear in between. The direction
+# (lower-is-better vs higher-is-better) follows from the order of good and bad.
+metrics:
+  latency_p95_ms:   { good: 100, bad: 1000 }
+  latency_avg_ms:   { good: 50,  bad: 500 }
+  error_rate_pct:   { good: 0,   bad: 5 }
+  availability_pct: { good: 100, bad: 95 }
+  cpu_pct:          { good: 50,  bad: 95 }
+  memory_pct:       { good: 50,  bad: 95 }
+  tail_ratio:       { good: 3,   bad: 15 }   # p99 / p50 latency; grows under saturation/queueing
+
+# Quality dimensions and the metrics (with sub-weights) that make them up.
+dimensions:
+  performance:  { latency_p95_ms: 0.6, latency_avg_ms: 0.4 }
+  reliability:  { error_rate_pct: 1.0 }
+  availability: { availability_pct: 1.0 }
+  efficiency:   { cpu_pct: 0.5, memory_pct: 0.5 }
+  scalability:  { tail_ratio: 1.0 }
+
+# Dimension weights for  QI = w1*P + w2*R + w3*A + w4*E + w5*S
+weighting:
+  method: ahp               # fixed | ahp | entropy | hybrid
+  fixed:
+    performance: 0.30
+    reliability: 0.25
+    availability: 0.20
+    efficiency: 0.15
+    scalability: 0.10
+  # Saaty pairwise comparison matrix, rows/columns in the order of `dimensions` above.
+  ahp_matrix:
+    - [1,   1,   2,   2,   3]
+    - [1,   1,   1,   2,   3]
+    - [1/2, 1,   1,   1,   2]
+    - [1/2, 1/2, 1,   1,   2]
+    - [1/3, 1/3, 1/2, 1/2, 1]
+  hybrid_alpha: 0.5         # hybrid = alpha * AHP + (1 - alpha) * entropy
+
+quality_levels:             # lower bound (inclusive) of each level
+  Excellent: 90
+  Good: 75
+  Fair: 60
+  Poor: 40
+  Critical: 0

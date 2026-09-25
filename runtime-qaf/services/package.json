@@ -1,0 +1,16 @@
+{
+  "name": "qaf-demo-services",
+  "version": "1.0.0",
+  "description": "Demo e-commerce microservices (user, product, order, payment) instrumented for the Runtime Quality Assessment Framework",
+  "private": true,
+  "scripts": {
+    "user": "node src/user.js",
+    "product": "node src/product.js",
+    "order": "node src/order.js",
+    "payment": "node src/payment.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "prom-client": "^15.1.3"
+  }
+}

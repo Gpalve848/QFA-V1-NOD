@@ -1,0 +1,28 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+scrape_configs:
+  # Demo microservices. The `service` target label also names the service in the
+  # `up` series, which the framework uses for availability.
+  - job_name: microservices
+    honor_labels: true
+    static_configs:
+      - targets: ["user:3001"]
+        labels: { service: user }
+      - targets: ["product:3002"]
+        labels: { service: product }
+      - targets: ["order:3003"]
+        labels: { service: order }
+      - targets: ["payment:3004"]
+        labels: { service: payment }
+
+  # Quality Index results published by the QAF exporter.
+  - job_name: qaf
+    scrape_interval: 15s
+    static_configs:
+      - targets: ["qaf:8000"]
+
+  - job_name: prometheus
+    static_configs:
+      - targets: ["localhost:9090"]
