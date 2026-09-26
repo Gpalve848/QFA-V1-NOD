@@ -27,9 +27,10 @@ SCENARIOS=(
   "E9|outage-payment|medium|docker compose stop payment"
 )
 
+# Restarting the services gives every scenario a clean process (no leaked memory,
+# no injected faults) instead of carrying state over from the previous scenario.
 reset_all() {
-  for s in user product order payment; do qaf chaos "$s" --reset >/dev/null 2>&1; done
-  docker compose start payment >/dev/null 2>&1
+  docker compose restart user product order payment >/dev/null 2>&1
 }
 
 selected=("$@")

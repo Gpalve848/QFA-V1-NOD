@@ -108,3 +108,15 @@ def test_all_weighting_methods_sum_to_one(cfg, method):
            {"performance": 40, "reliability": 60, "availability": 100, "efficiency": 90, "scalability": 50}]
     w = resolve_weights(cfg, obs).weights
     assert sum(w.values()) == pytest.approx(1)
+
+
+def test_service_down_now_ignores_stale_samples(cfg):
+    # Healthy samples from before the outage, then the target stops answering.
+    raw = {"payment": {"latency_p50_ms": [20] * 6, "latency_p99_ms": [60] * 6, "latency_p95_ms": [50] * 6,
+                       "availability_pct": [100, 100, 100, 50, 0, 0], "up_pct": [100, 100, 100, 0, 0, 0],
+                       "cpu_pct": [5] * 6, "error_rate_pct": [0] * 6}}
+    metrics = preprocess(raw, cfg)
+    assert metrics["payment"]["latency_p95_ms"] is None
+    a = assess_metrics(metrics, cfg)
+    assert a.services["payment"].quality_index == 0
+    assert a.services["payment"].level == "Critical"

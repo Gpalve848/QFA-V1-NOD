@@ -108,16 +108,16 @@ def summarize(rows: list[dict]) -> str:
         system[r["scenario"]].append(r["system_quality_index"])
 
     dim_cols = [c for c in rows[0] if c.startswith("dim_")] if rows else []
-    header = (f"{'scenario':<14}{'service':<10}" + "".join(f"{c[4:][:11]:>12}" for c in dim_cols)
+    header = (f"{'scenario':<24}{'service':<10}" + "".join(f"{c[4:][:11]:>12}" for c in dim_cols)
               + f"{'QI':>8}{'p95 ms':>9}{'err %':>8}{'cpu %':>8}{'n':>5}")
     lines = [header, "-" * len(header)]
     for (scenario, service), grp in sorted(groups.items()):
         lines.append(
-            f"{scenario:<14}{service:<10}" + "".join(f"{_fmt(_mean(r[c] for r in grp)):>12}" for c in dim_cols)
+            f"{scenario:<24}{service:<10}" + "".join(f"{_fmt(_mean(r[c] for r in grp)):>12}" for c in dim_cols)
             + f"{_fmt(_mean(r['quality_index'] for r in grp)):>8}{_fmt(_mean(r['latency_p95_ms'] for r in grp)):>9}"
             f"{_fmt(_mean(r['error_rate_pct'] for r in grp), 2):>8}{_fmt(_mean(r['cpu_pct'] for r in grp)):>8}{len(grp):>5}"
         )
     lines += ["", "System QI by scenario:"]
     for scenario, values in sorted(system.items()):
-        lines.append(f"  {scenario:<14}{_fmt(_mean(values))}")
+        lines.append(f"  {scenario:<24}{_fmt(_mean(values))}")
     return "\n".join(lines)

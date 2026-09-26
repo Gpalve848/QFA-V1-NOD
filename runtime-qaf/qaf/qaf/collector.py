@@ -33,6 +33,8 @@ QUERIES = {
         '/ sum by (service) (rate(http_requests_total{{job="{job}"}}[{w}]))'
     ),
     "availability_pct": '100 * avg by (service) (avg_over_time(up{{job="{job}"}}[{w}]))',
+    # Instantaneous health; the last sample tells whether the service is down right now.
+    "up_pct": '100 * avg by (service) (up{{job="{job}"}})',
     "cpu_pct": '100 * sum by (service) (rate(process_cpu_seconds_total{{job="{job}"}}[{w}])) / {cpu}',
     "memory_pct": '100 * sum by (service) (process_resident_memory_bytes{{job="{job}"}}) / {mem}',
 }

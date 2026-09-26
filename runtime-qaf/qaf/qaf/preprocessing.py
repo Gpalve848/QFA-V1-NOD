@@ -32,6 +32,12 @@ def aggregate(values: list[float], method: str = "median", alpha: float = 0.3) -
     return float(np.median(values))
 
 
+def is_down(up_series) -> bool:
+    """True when the most recent health sample shows the service unreachable."""
+    finite = [v for v in up_series if v is not None and math.isfinite(v)]
+    return bool(finite) and finite[-1] == 0
+
+
 def preprocess(raw: dict[str, dict[str, list[float]]], cfg: dict) -> dict[str, dict[str, float | None]]:
     """{service: {metric: samples}} -> {service: {metric: value or None}}, plus derived metrics."""
     pp = cfg.get("preprocessing", {})
@@ -42,6 +48,12 @@ def preprocess(raw: dict[str, dict[str, list[float]]], cfg: dict) -> dict[str, d
     result: dict[str, dict[str, float | None]] = {}
     for service, metrics in raw.items():
         values = {m: aggregate(clean_series(s, k), method, alpha) for m, s in metrics.items()}
+
+        # A service that is down right now must not be scored on samples from before
+        # the outage: keep only availability, so its QI collapses to the availability score.
+        if is_down(metrics.get("up_pct", [])):
+            values = {m: (v if m in ("availability_pct", "up_pct") else None) for m, v in values.items()}
+            values["up_pct"] = 0.0
 
         # Derived metric for scalability: tail amplification under load.
         p50, p99 = values.get("latency_p50_ms"), values.get("latency_p99_ms")
