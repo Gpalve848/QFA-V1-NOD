@@ -285,7 +285,7 @@ function chapter2() {
     P('ISO/IEC 25010 defines a product quality model with characteristics such as performance efficiency, reliability (including availability and fault tolerance) and maintainability [1]. The five dimensions used in this framework follow this model for the characteristics that can be observed at runtime: performance (time behaviour), reliability (fault tolerance), availability, resource efficiency (resource utilisation) and scalability (capacity). Many studies of microservice quality focus on design-time properties such as coupling, cohesion and service granularity [13], [15], [16], while systematic reviews note that runtime quality assessment of microservices remains an open research area [14].'),
     H2('2.3 Composite Indices and Multi-Criteria Weighting'),
     P('A composite index combines several indicators into one number. The OECD/JRC handbook describes the standard steps — selecting indicators, normalising them, weighting and aggregating — and warns that linear (weighted-average) aggregation is **compensatory**: a very poor value on one indicator can be hidden by good values on the others [10]. This point turned out to be important in our experiments (Section 5.7).'),
-    P('Weights can be assigned subjectively or objectively. The **Analytic Hierarchy Process (AHP)** derives weights from pairwise comparisons made by experts and checks that these judgements are consistent through a consistency ratio [2]. The **Entropy Weight Method (EWM)**, based on Shannon’s information entropy [3], derives weights from the data itself: indicators that vary more across the observations carry more information and receive higher weight [17]. Recent work on software quality indices combines AHP and entropy weighting into a single composite index [18]; this dissertation applies the same idea to runtime metrics of microservices.'),
+    P('Weights can be assigned subjectively or objectively. The **Analytic Hierarchy Process (AHP)** derives weights from pairwise comparisons made by experts and checks that these judgements are consistent through a consistency ratio [2]. The **Entropy Weight Method (EWM)**, based on Shannon’s information entropy [3], derives weights from the data itself: indicators that vary more across the observations carry more information and receive higher weight [17]. Recent work on software quality in agile projects normalises code, process and team indicators, weights them with an entropy-based method and combines them into a single composite index, the Overall Software Quality Index [18]; this dissertation applies a similar idea to the runtime metrics of microservices, combining subjective (AHP) and objective (entropy) weighting.'),
     H2('2.4 Summary of Reviewed Literature'),
     ...table('Summary of reviewed literature', ['Ref.', 'Focus', 'Relevance to this work'], [
       ['[4], [7], [11]', 'Golden signals, USE and RED methods', 'Basis for choosing latency, errors, traffic and saturation metrics'],
@@ -293,7 +293,7 @@ function chapter2() {
       ['[13], [15], [16]', 'Design-time microservice metrics', 'Complementary; they do not use runtime behaviour'],
       ['[14]', 'Review of microservice quality assessment', 'Identifies runtime quality assessment as a gap'],
       ['[2], [3], [17]', 'AHP and Entropy Weight Method', 'Weighting methods implemented in the framework'],
-      ['[10], [18]', 'Composite indicators, AHP + entropy index', 'Normalisation and aggregation method; compensability issue'],
+      ['[10], [18]', 'Composite indicators; entropy-weighted software quality index', 'Normalisation and aggregation method; compensability issue'],
     ], [18, 37, 45]),
     H2('2.5 Research Gap'),
     P('The reviewed work either (a) defines which runtime signals to monitor without combining them, (b) assesses microservice quality from the design rather than from runtime behaviour, or (c) builds composite quality indices in other domains. We found little work that combines runtime metrics of a running microservice system into a **single, weighted, explainable Quality Index** that also **attributes quality loss to individual services** and **suggests corrective actions**. This is the gap addressed by the proposed framework. As advised by the supervisor, the literature survey will be extended in the second half with more recent peer-reviewed work on QoS-based composite indices.'),
@@ -510,12 +510,12 @@ const REFERENCES = [
   'OECD and European Commission JRC, Handbook on Constructing Composite Indicators: Methodology and User Guide. Paris: OECD Publishing, 2008.',
   'T. Wilkie, “The RED Method: Key Metrics for Microservices Architecture,” Grafana Labs blog, 2018.',
   'J. Soldani, D. A. Tamburri and W.-J. van den Heuvel, “The Pains and Gains of Microservices: A Systematic Grey Literature Review,” Journal of Systems and Software, vol. 146, pp. 215–232, 2018.',
-  '“A Metrics Framework for Evaluating Microservices Architecture Designs,” River Publishers / IEEE, 2023.',
-  'V. C. Tapia et al., “Research Opportunities in Microservices Quality Assessment: A Systematic Literature Review,” Journal of Advances in Information Technology, vol. 14, no. 5, 2023.',
-  '“Fostering Microservice Maintainability Assurance through a Comprehensive Framework,” arXiv:2407.16873, 2024.',
-  '“A Decomposition and Metric-Based Evaluation Framework for Microservices,” arXiv:1908.08513, 2019.',
-  'Z. Zou, Y. Yun and J. Sun, “Entropy method for determination of weight of evaluating indicators in fuzzy synthetic evaluation for water quality assessment,” Journal of Environmental Sciences, vol. 18, no. 5, pp. 1020–1023, 2006.',
-  '“A Multidimensional Decision-Support Framework for Software Quality Assessment in Agile Projects (OSQI),” Information (MDPI), 2026.',
+  'O. Al-Debagy and P. Martinek, “A Metrics Framework for Evaluating Microservices Architecture Designs,” Journal of Web Engineering, vol. 19, no. 3–4, pp. 341–370, 2020.',
+  'V. C. Tapia and C. M. Gaona, “Research Opportunities in Microservices Quality Assessment: A Systematic Literature Review,” Journal of Advances in Information Technology, vol. 14, no. 5, pp. 991–1002, 2023.',
+  'A. S. Abdelfattah, “Fostering Microservice Maintainability Assurance through a Comprehensive Framework,” in Proc. IEEE Int. Conf. on Software Maintenance and Evolution (ICSME), Doctoral Symposium, 2024. arXiv:2407.16873.',
+  'D. Taibi and K. Systä, “A Decomposition and Metric-Based Evaluation Framework for Microservices,” arXiv:1908.08513, 2019.',
+  'Z. Zou, Y. Yun and J. Sun, “Entropy method for determination of weight of evaluating indicators in fuzzy synthetic evaluation for water quality assessment,” Journal of Environmental Sciences, vol. 18, no. 5, pp. 1020–1023, 2006, doi: 10.1016/S1001-0742(06)60032-6.',
+  'N. Canbaz Horozlu and T. Serif, “A Multidimensional Decision-Support Framework for Software Quality Assessment in Agile Projects,” Information, vol. 17, no. 7, art. 624, 2026, doi: 10.3390/info17070624.',
 ];
 
 function references() {
