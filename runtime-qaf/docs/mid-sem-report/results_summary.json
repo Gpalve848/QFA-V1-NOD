@@ -1,0 +1,701 @@
+{
+  "ahp": {
+    "weights": {
+      "performance": 0.3012931193212596,
+      "reliability": 0.26457632702140704,
+      "availability": 0.1856214953457824,
+      "efficiency": 0.15945428333025963,
+      "scalability": 0.08905477498129134
+    },
+    "lambda_max": 5.055493242162286,
+    "ci": 0.013873310540571504,
+    "cr": 0.012386884411224555,
+    "matrix": [
+      [
+        1.0,
+        1.0,
+        2.0,
+        2.0,
+        3.0
+      ],
+      [
+        1.0,
+        1.0,
+        1.0,
+        2.0,
+        3.0
+      ],
+      [
+        0.5,
+        1.0,
+        1.0,
+        1.0,
+        2.0
+      ],
+      [
+        0.5,
+        0.5,
+        1.0,
+        1.0,
+        2.0
+      ],
+      [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.5,
+        0.5,
+        1.0
+      ]
+    ]
+  },
+  "experiments": {
+    "E1": {
+      "scenario": "low",
+      "label": "E1 Low",
+      "system_qi": 98.03685305760723,
+      "samples": 12,
+      "services": {
+        "user": {
+          "qi": 99.66696817901175,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 96.2603709788924
+          },
+          "p95_ms": 20.734107705780797,
+          "error_pct": 0.0,
+          "cpu_pct": 3.9350069803013246,
+          "memory_pct": 28.060150146484375,
+          "rps": 1.9079619841492692,
+          "availability_pct": 100.0
+        },
+        "product": {
+          "qi": 99.50526517697688,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 94.44460082991573
+          },
+          "p95_ms": 40.79445721439733,
+          "error_pct": 0.0,
+          "cpu_pct": 4.017548922604761,
+          "memory_pct": 28.69860331217448,
+          "rps": 3.43454795374678,
+          "availability_pct": 100.0
+        },
+        "order": {
+          "qi": 94.81644227245738,
+          "dimensions": {
+            "performance": 92.35660332612566,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 67.65299893165265
+          },
+          "p95_ms": 171.6165029806831,
+          "error_pct": 0.0,
+          "cpu_pct": 8.561640168458398,
+          "memory_pct": 31.771024068196613,
+          "rps": 1.352478619049865,
+          "availability_pct": 100.0
+        },
+        "payment": {
+          "qi": 99.99999999999999,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 100.0
+          },
+          "p95_ms": 90.94551137369542,
+          "error_pct": 0.0,
+          "cpu_pct": 3.1536635889500535,
+          "memory_pct": 28.296152750651043,
+          "rps": 1.435259666171498,
+          "availability_pct": 100.0
+        }
+      }
+    },
+    "E2": {
+      "scenario": "medium",
+      "label": "E2 Medium",
+      "system_qi": 98.4651597069341,
+      "samples": 12,
+      "services": {
+        "user": {
+          "qi": 99.72765571443729,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 96.94183399351789
+          },
+          "p95_ms": 20.356561120238975,
+          "error_pct": 0.0,
+          "cpu_pct": 7.649952212872633,
+          "memory_pct": 29.75482940673828,
+          "rps": 9.8121096570451,
+          "availability_pct": 100.0
+        },
+        "product": {
+          "qi": 99.36996643576096,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 92.92532529141334
+          },
+          "p95_ms": 39.898835469849836,
+          "error_pct": 0.0,
+          "cpu_pct": 11.959261738998444,
+          "memory_pct": 30.261802673339844,
+          "rps": 17.042694276470147,
+          "availability_pct": 100.0
+        },
+        "order": {
+          "qi": 96.09148017890375,
+          "dimensions": {
+            "performance": 93.1423089261262,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 79.31223018087131
+          },
+          "p95_ms": 164.11181970216526,
+          "error_pct": 0.0,
+          "cpu_pct": 22.379974454368593,
+          "memory_pct": 33.707237243652344,
+          "rps": 6.985231398469469,
+          "availability_pct": 100.0
+        },
+        "payment": {
+          "qi": 99.99999999999999,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 100.0
+          },
+          "p95_ms": 90.97781712702977,
+          "error_pct": 0.0,
+          "cpu_pct": 6.711997173364391,
+          "memory_pct": 29.810206095377605,
+          "rps": 6.981971182652791,
+          "availability_pct": 100.0
+        }
+      }
+    },
+    "E3": {
+      "scenario": "peak",
+      "label": "E3 Peak",
+      "system_qi": 90.65783940089058,
+      "samples": 12,
+      "services": {
+        "user": {
+          "qi": 98.65640351431081,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 84.91269574291285
+          },
+          "p95_ms": 20.97013743495363,
+          "error_pct": 0.0,
+          "cpu_pct": 17.666115162150593,
+          "memory_pct": 30.478922526041668,
+          "rps": 32.605464141458086,
+          "availability_pct": 100.0
+        },
+        "product": {
+          "qi": 99.41275761875221,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 93.40582937443678
+          },
+          "p95_ms": 39.610646667960616,
+          "error_pct": 0.0,
+          "cpu_pct": 24.224497547173698,
+          "memory_pct": 30.849647521972656,
+          "rps": 55.42587294400047,
+          "availability_pct": 100.0
+        },
+        "order": {
+          "qi": 74.21950671426715,
+          "dimensions": {
+            "performance": 49.25690283508603,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 82.1959356407614,
+            "scalability": 14.06397988503525
+          },
+          "p95_ms": 696.0544854496075,
+          "error_pct": 0.0,
+          "cpu_pct": 56.97480388062869,
+          "memory_pct": 34.98687744140625,
+          "rps": 22.94174358342545,
+          "availability_pct": 100.0
+        },
+        "payment": {
+          "qi": 99.99999999999999,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 100.0
+          },
+          "p95_ms": 91.02804363556395,
+          "error_pct": 0.0,
+          "cpu_pct": 15.375415444578692,
+          "memory_pct": 30.381520589192707,
+          "rps": 22.921738987711688,
+          "availability_pct": 100.0
+        }
+      }
+    },
+    "E4": {
+      "scenario": "spike",
+      "label": "E4 Spike",
+      "system_qi": 93.33572154426598,
+      "samples": 12,
+      "services": {
+        "user": {
+          "qi": 99.62182163534901,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 95.75341844690051
+          },
+          "p95_ms": 20.105593834573824,
+          "error_pct": 0.0,
+          "cpu_pct": 10.69564723076653,
+          "memory_pct": 29.92235819498698,
+          "rps": 21.77769372677417,
+          "availability_pct": 100.0
+        },
+        "product": {
+          "qi": 99.39540737585641,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 93.21100273095293
+          },
+          "p95_ms": 41.11695024556487,
+          "error_pct": 0.0,
+          "cpu_pct": 14.522727438497384,
+          "memory_pct": 29.379526774088543,
+          "rps": 36.453439032426196,
+          "availability_pct": 100.0
+        },
+        "order": {
+          "qi": 81.46676235369243,
+          "dimensions": {
+            "performance": 60.173472379687546,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 98.45518469974645,
+            "scalability": 29.39792961589507
+          },
+          "p95_ms": 560.5936293658921,
+          "error_pct": 0.0,
+          "cpu_pct": 31.11619721277145,
+          "memory_pct": 33.77558390299479,
+          "rps": 14.546948125847214,
+          "availability_pct": 100.0
+        },
+        "payment": {
+          "qi": 99.99999999999999,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 100.0
+          },
+          "p95_ms": 91.58240828211338,
+          "error_pct": 0.0,
+          "cpu_pct": 8.766372228662467,
+          "memory_pct": 29.945627848307293,
+          "rps": 14.56834372495562,
+          "availability_pct": 100.0
+        }
+      }
+    },
+    "E5": {
+      "scenario": "failure-payment-errors",
+      "label": "E5 Payment errors",
+      "system_qi": 82.00626946973289,
+      "samples": 12,
+      "services": {
+        "user": {
+          "qi": 99.71781037208898,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 96.83128020962046
+          },
+          "p95_ms": 20.25875934223146,
+          "error_pct": 0.0,
+          "cpu_pct": 8.33539046194831,
+          "memory_pct": 29.76226806640625,
+          "rps": 10.05789943317152,
+          "availability_pct": 100.0
+        },
+        "product": {
+          "qi": 99.48831154294406,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 94.25422772486472
+          },
+          "p95_ms": 38.4664583420551,
+          "error_pct": 0.0,
+          "cpu_pct": 12.016434402138309,
+          "memory_pct": 30.305035909016926,
+          "rps": 17.169908247031042,
+          "availability_pct": 100.0
+        },
+        "order": {
+          "qi": 71.68064404563701,
+          "dimensions": {
+            "performance": 96.28796406889734,
+            "reliability": 0.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 91.6533126082917
+          },
+          "p95_ms": 138.7974743861088,
+          "error_pct": 27.692606039353095,
+          "cpu_pct": 23.946078419206003,
+          "memory_pct": 33.699607849121094,
+          "rps": 6.9707857095293875,
+          "availability_pct": 100.0
+        },
+        "payment": {
+          "qi": 73.54236729785929,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 0.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 100.0
+          },
+          "p95_ms": 87.86762654290403,
+          "error_pct": 27.554076844671346,
+          "cpu_pct": 6.956019900377822,
+          "memory_pct": 29.753494262695312,
+          "rps": 6.962670870879367,
+          "availability_pct": 100.0
+        }
+      }
+    },
+    "E6": {
+      "scenario": "failure-order-latency",
+      "label": "E6 Order latency",
+      "system_qi": 89.2719851893011,
+      "samples": 12,
+      "services": {
+        "user": {
+          "qi": 99.65204298757556,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 96.09277534531357
+          },
+          "p95_ms": 19.699735252697533,
+          "error_pct": 0.0,
+          "cpu_pct": 6.631846088702155,
+          "memory_pct": 29.61304982503255,
+          "rps": 8.152739691611748,
+          "availability_pct": 100.0
+        },
+        "product": {
+          "qi": 99.3619403367938,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 92.83519987176165
+          },
+          "p95_ms": 38.41251958771101,
+          "error_pct": 0.0,
+          "cpu_pct": 8.931992362998804,
+          "memory_pct": 30.101267496744793,
+          "rps": 13.770151360069312,
+          "availability_pct": 100.0
+        },
+        "order": {
+          "qi": 69.86225906801718,
+          "dimensions": {
+            "performance": 0.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 99.90535038847042
+          },
+          "p95_ms": 2283.501408816259,
+          "error_pct": 0.0,
+          "cpu_pct": 19.18243685524892,
+          "memory_pct": 33.35393269856771,
+          "rps": 5.60919892775476,
+          "availability_pct": 100.0
+        },
+        "payment": {
+          "qi": 99.99999999999999,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 100.0
+          },
+          "p95_ms": 90.87778325691492,
+          "error_pct": 0.0,
+          "cpu_pct": 5.468230233146734,
+          "memory_pct": 29.50458526611328,
+          "rps": 5.6102659223353575,
+          "availability_pct": 100.0
+        }
+      }
+    },
+    "E7": {
+      "scenario": "failure-product-cpu",
+      "label": "E7 Product CPU",
+      "system_qi": 92.94563669063302,
+      "samples": 12,
+      "services": {
+        "user": {
+          "qi": 99.67675256438092,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 96.37024027417978
+          },
+          "p95_ms": 20.198689852652688,
+          "error_pct": 0.0,
+          "cpu_pct": 7.384907547412496,
+          "memory_pct": 29.674148559570312,
+          "rps": 9.102773788635774,
+          "availability_pct": 100.0
+        },
+        "product": {
+          "qi": 89.34444608019884,
+          "dimensions": {
+            "performance": 84.68370093350826,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 65.50451394674907,
+            "scalability": 93.93176400744363
+          },
+          "p95_ms": 247.78556837522703,
+          "error_pct": 0.0,
+          "cpu_pct": 74.55035029759507,
+          "memory_pct": 30.77557881673177,
+          "rps": 15.004302876521857,
+          "availability_pct": 100.0
+        },
+        "order": {
+          "qi": 86.0720988283889,
+          "dimensions": {
+            "performance": 54.93421479292684,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 96.07106781210064
+          },
+          "p95_ms": 514.5448680082146,
+          "error_pct": 0.0,
+          "cpu_pct": 20.570731836777544,
+          "memory_pct": 33.68078867594401,
+          "rps": 6.304629239342141,
+          "availability_pct": 100.0
+        },
+        "payment": {
+          "qi": 99.99999999999999,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 100.0
+          },
+          "p95_ms": 89.69693007232136,
+          "error_pct": 0.0,
+          "cpu_pct": 6.298182650803747,
+          "memory_pct": 29.602559407552082,
+          "rps": 6.324459313344988,
+          "availability_pct": 100.0
+        }
+      }
+    },
+    "E8": {
+      "scenario": "failure-user-memory",
+      "label": "E8 User memory",
+      "system_qi": 97.32886479750931,
+      "samples": 12,
+      "services": {
+        "user": {
+          "qi": 91.75232740273947,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 50.0,
+            "scalability": 96.91247964182357
+          },
+          "p95_ms": 21.210544078008216,
+          "error_pct": 0.0,
+          "cpu_pct": 4.330502306529516,
+          "memory_pct": 114.59808349609375,
+          "rps": 2.1490194481426816,
+          "availability_pct": 100.0
+        },
+        "product": {
+          "qi": 99.38345266066382,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 93.07676270625906
+          },
+          "p95_ms": 39.82177708385075,
+          "error_pct": 0.0,
+          "cpu_pct": 4.809458030304868,
+          "memory_pct": 28.60399881998698,
+          "rps": 3.6425405669901942,
+          "availability_pct": 100.0
+        },
+        "order": {
+          "qi": 96.2552147284732,
+          "dimensions": {
+            "performance": 95.20761589157213,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 74.16339646025386
+          },
+          "p95_ms": 132.02978734754956,
+          "error_pct": 0.0,
+          "cpu_pct": 8.791512069813779,
+          "memory_pct": 31.914647420247395,
+          "rps": 1.6215577686873248,
+          "availability_pct": 100.0
+        },
+        "payment": {
+          "qi": 99.99999999999999,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 100.0
+          },
+          "p95_ms": 90.53536186563808,
+          "error_pct": 0.0,
+          "cpu_pct": 3.6525864850833663,
+          "memory_pct": 28.273900349934895,
+          "rps": 1.6195016542141032,
+          "availability_pct": 100.0
+        }
+      }
+    },
+    "E9": {
+      "scenario": "outage-payment",
+      "label": "E9 Payment outage",
+      "system_qi": 49.81236161904411,
+      "samples": 12,
+      "services": {
+        "user": {
+          "qi": 99.77776047782243,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 97.50446259367602
+          },
+          "p95_ms": 21.06008455804113,
+          "error_pct": 0.0,
+          "cpu_pct": 6.7246596153962095,
+          "memory_pct": 29.511133829752605,
+          "rps": 5.584911045644408,
+          "availability_pct": 100.0
+        },
+        "product": {
+          "qi": 99.55435631529753,
+          "dimensions": {
+            "performance": 100.0,
+            "reliability": 100.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 94.99584738947378
+          },
+          "p95_ms": 40.35158614071978,
+          "error_pct": 0.0,
+          "cpu_pct": 8.711448113486222,
+          "memory_pct": 29.990259806315105,
+          "rps": 9.380648680598325,
+          "availability_pct": 100.0
+        },
+        "order": {
+          "qi": 42.670932240889236,
+          "dimensions": {
+            "performance": 0.0,
+            "reliability": 0.0,
+            "availability": 100.0,
+            "efficiency": 100.0,
+            "scalability": 91.66666666666667
+          },
+          "p95_ms": 4848.344572494807,
+          "error_pct": 86.82120451903025,
+          "cpu_pct": 16.695272487285504,
+          "memory_pct": 33.92448425292969,
+          "rps": 3.8351631630594922,
+          "availability_pct": 100.0
+        },
+        "payment": {
+          "qi": 0.0,
+          "dimensions": {
+            "performance": null,
+            "reliability": null,
+            "availability": 0.0,
+            "efficiency": null,
+            "scalability": null
+          },
+          "p95_ms": null,
+          "error_pct": null,
+          "cpu_pct": null,
+          "memory_pct": null,
+          "rps": null,
+          "availability_pct": 18.055555555555554
+        }
+      }
+    }
+  }
+}
