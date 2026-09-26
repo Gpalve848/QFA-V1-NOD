@@ -1,0 +1,22 @@
+time="2026-09-26T03:52:06Z" level=warning msg="Request Failed" error="Post \"http://order:3003/orders\": read tcp 172.19.0.9:46196->172.19.0.5:3003: read: connection reset by peer"
+
+     ✓ status < 500
+
+     checks.........................: 100.00% ✓ 6324      ✗ 0   
+     data_received..................: 4.0 MB  14 kB/s
+     data_sent......................: 743 kB  2.6 kB/s
+     http_req_blocked...............: avg=121.95µs med=10µs     p(90)=499.19µs p(95)=927.77µs p(99)=1.31ms   max=16.02ms
+     http_req_connecting............: avg=89.64µs  med=0s       p(90)=371.71µs p(95)=742.33µs p(99)=1.03ms   max=15.92ms
+     http_req_duration..............: avg=40.13ms  med=22.74ms  p(90)=82.09ms  p(95)=90.8ms   p(99)=245.4ms  max=1.09s  
+       { expected_response:true }...: avg=40.1ms   med=22.73ms  p(90)=82.06ms  p(95)=90.76ms  p(99)=242.29ms max=1.09s  
+     http_req_failed................: 0.01%   ✓ 1         ✗ 6323
+     http_req_receiving.............: avg=199.51µs med=164.01µs p(90)=284.7µs  p(95)=337.06µs p(99)=558.76µs max=8.21ms 
+     http_req_sending...............: avg=78.17µs  med=50.5µs   p(90)=157.98µs p(95)=183.84µs p(99)=282.74µs max=7.69ms 
+     http_req_tls_handshaking.......: avg=0s       med=0s       p(90)=0s       p(95)=0s       p(99)=0s       max=0s     
+     http_req_waiting...............: avg=39.85ms  med=22.44ms  p(90)=81.8ms   p(95)=90.44ms  p(99)=245.18ms max=1.09s  
+     http_reqs......................: 6324    22.136688/s
+     iteration_duration.............: avg=1.04s    med=1.04s    p(90)=1.44s    p(95)=1.49s    p(99)=1.56s    max=2.17s  
+     iterations.....................: 6324    22.136688/s
+     vus............................: 2       min=1       max=25
+     vus_max........................: 25      min=25      max=25
+

@@ -1,0 +1,34 @@
+time="2026-09-26T04:05:00Z" level=warning msg="Request Failed" error="Post \"http://order:3003/orders\": read tcp 172.19.0.9:37368->172.19.0.5:3003: read: connection reset by peer"
+time="2026-09-26T04:05:04Z" level=warning msg="Request Failed" error="Post \"http://order:3003/orders\": read tcp 172.19.0.9:37786->172.19.0.5:3003: read: connection reset by peer"
+time="2026-09-26T04:05:05Z" level=warning msg="Request Failed" error="Post \"http://order:3003/orders\": read tcp 172.19.0.9:55428->172.19.0.5:3003: read: connection reset by peer"
+time="2026-09-26T04:05:06Z" level=warning msg="Request Failed" error="Post \"http://order:3003/orders\": read tcp 172.19.0.9:38010->172.19.0.5:3003: read: connection reset by peer"
+time="2026-09-26T04:05:06Z" level=warning msg="Request Failed" error="Post \"http://order:3003/orders\": read tcp 172.19.0.9:37568->172.19.0.5:3003: read: connection reset by peer"
+time="2026-09-26T04:05:25Z" level=warning msg="Request Failed" error="Post \"http://order:3003/orders\": read tcp 172.19.0.9:57328->172.19.0.5:3003: read: connection reset by peer"
+time="2026-09-26T04:05:31Z" level=warning msg="Request Failed" error="Post \"http://order:3003/orders\": read tcp 172.19.0.9:57794->172.19.0.5:3003: read: connection reset by peer"
+time="2026-09-26T04:05:43Z" level=warning msg="Request Failed" error="Post \"http://order:3003/orders\": read tcp 172.19.0.9:57284->172.19.0.5:3003: read: connection reset by peer"
+time="2026-09-26T04:05:54Z" level=warning msg="Request Failed" error="Post \"http://order:3003/orders\": read tcp 172.19.0.9:37314->172.19.0.5:3003: read: connection reset by peer"
+time="2026-09-26T04:05:55Z" level=warning msg="Request Failed" error="Post \"http://order:3003/orders\": read tcp 172.19.0.9:45620->172.19.0.5:3003: read: connection reset by peer"
+time="2026-09-26T04:05:56Z" level=warning msg="Request Failed" error="Post \"http://order:3003/orders\": read tcp 172.19.0.9:49340->172.19.0.5:3003: read: connection reset by peer"
+time="2026-09-26T04:05:56Z" level=warning msg="Request Failed" error="Post \"http://order:3003/orders\": read tcp 172.19.0.9:49252->172.19.0.5:3003: read: connection reset by peer"
+time="2026-09-26T04:05:56Z" level=warning msg="Request Failed" error="Post \"http://order:3003/orders\": read tcp 172.19.0.9:45402->172.19.0.5:3003: read: connection reset by peer"
+
+     ✓ status < 500
+
+     checks.........................: 100.00% ✓ 11029     ✗ 0    
+     data_received..................: 6.8 MB  25 kB/s
+     data_sent......................: 1.3 MB  4.8 kB/s
+     http_req_blocked...............: avg=126.93µs med=6.8µs    p(90)=443.64µs p(95)=612.31µs p(99)=1.37ms   max=36.02ms
+     http_req_connecting............: avg=99.85µs  med=0s       p(90)=338.59µs p(95)=472.27µs p(99)=1.08ms   max=35.97ms
+     http_req_duration..............: avg=105.16ms med=23.41ms  p(90)=259.18ms p(95)=481.38ms p(99)=1.44s    max=2.74s  
+       { expected_response:true }...: avg=105.18ms med=23.41ms  p(90)=259.23ms p(95)=482.09ms p(99)=1.44s    max=2.74s  
+     http_req_failed................: 0.11%   ✓ 13        ✗ 11016
+     http_req_receiving.............: avg=154.44µs med=122.61µs p(90)=207.14µs p(95)=280.36µs p(99)=890.67µs max=12.26ms
+     http_req_sending...............: avg=64.14µs  med=29.5µs   p(90)=96.01µs  p(95)=126.17µs p(99)=248.24µs max=95.46ms
+     http_req_tls_handshaking.......: avg=0s       med=0s       p(90)=0s       p(95)=0s       p(99)=0s       max=0s     
+     http_req_waiting...............: avg=104.94ms med=23.24ms  p(90)=259.02ms p(95)=481.26ms p(99)=1.44s    max=2.74s  
+     http_reqs......................: 11029   40.741885/s
+     iteration_duration.............: avg=1.1s     med=1.08s    p(90)=1.49s    p(95)=1.64s    p(99)=2.53s    max=4s     
+     iterations.....................: 11029   40.741885/s
+     vus............................: 1       min=1       max=150
+     vus_max........................: 150     min=150     max=150
+

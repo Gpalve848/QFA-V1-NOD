@@ -1,0 +1,22 @@
+time="2026-09-26T04:23:57Z" level=warning msg="Request Failed" error="Post \"http://order:3003/orders\": EOF"
+
+     ✓ status < 500
+
+     checks.........................: 100.00% ✓ 5491      ✗ 0   
+     data_received..................: 3.4 MB  12 kB/s
+     data_sent......................: 646 kB  2.3 kB/s
+     http_req_blocked...............: avg=141.29µs med=8.9µs    p(90)=599.97µs p(95)=901.86µs p(99)=1.32ms   max=24.54ms
+     http_req_connecting............: avg=106.58µs med=0s       p(90)=464.86µs p(95)=705.12µs p(99)=1.03ms   max=24.33ms
+     http_req_duration..............: avg=192.88ms med=170.33ms p(90)=379.37ms p(95)=466.1ms  p(99)=748.69ms max=1.52s  
+       { expected_response:true }...: avg=192.91ms med=170.44ms p(90)=379.38ms p(95)=466.1ms  p(99)=748.7ms  max=1.52s  
+     http_req_failed................: 0.01%   ✓ 1         ✗ 5490
+     http_req_receiving.............: avg=187.93µs med=152.91µs p(90)=256.61µs p(95)=314.04µs p(99)=572.51µs max=12.17ms
+     http_req_sending...............: avg=145.5µs  med=47.4µs   p(90)=149.02µs p(95)=175.51µs p(99)=295.08µs max=177.9ms
+     http_req_tls_handshaking.......: avg=0s       med=0s       p(90)=0s       p(95)=0s       p(99)=0s       max=0s     
+     http_req_waiting...............: avg=192.55ms med=170.26ms p(90)=378.88ms p(95)=465.74ms p(99)=745.52ms max=1.52s  
+     http_reqs......................: 5491    19.232728/s
+     iteration_duration.............: avg=1.19s    med=1.19s    p(90)=1.62s    p(95)=1.72s    p(99)=1.94s    max=2.64s  
+     iterations.....................: 5491    19.232728/s
+     vus............................: 2       min=1       max=25
+     vus_max........................: 25      min=25      max=25
+
