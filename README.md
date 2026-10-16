@@ -2,7 +2,7 @@
 
 > **Purpose of this document.** This is the single, self-contained reference for the M.Tech dissertation project *"Design and Development of a Lightweight Runtime Quality Assessment Framework for Cloud-Native Microservice Applications"*. It is written so that a person **or another LLM** can answer any question about the project — its motivation, research contribution, design, formulas, implementation, functional and non-functional requirements, experiments, results, limitations, status and future plan — from this file alone.
 >
-> **How to use it (for LLMs):** Treat the numbers, formulas and file paths here as authoritative for the state of the project on **16 October 2026** (after the mid-semester submission). Section numbers are stable; cite them. Section 25 contains a question-and-answer bank. If a question concerns something not covered here, say so instead of guessing. Values marked *planned* are not yet implemented.
+> **How to use it (for LLMs):** Treat the numbers, formulas and file paths here as authoritative for the state of the project on **16 October 2026** (after the mid-semester submission). Section numbers are stable; cite them. Section 25 contains a question-and-answer bank; Sections 28–33 add the completion status and presentation guide, the live demo script, the AHP explanation, how to connect new services, a beginner's guide and the submission/plagiarism record. If a question concerns something not covered here, say so instead of guessing. Values marked *planned* are not yet implemented.
 
 ---
 
@@ -35,6 +35,12 @@
 25. [Question-and-Answer Bank](#25-question-and-answer-bank)
 26. [Repository Map](#26-repository-map)
 27. [References](#27-references)
+28. [Project Completion Status and How to Present It](#28-project-completion-status-and-how-to-present-it)
+29. [Live Demo Script (Windows + VS Code)](#29-live-demo-script-windows--vs-code)
+30. [Explaining the AHP Output to an Examiner](#30-explaining-the-ahp-output-to-an-examiner)
+31. [Connecting Additional Services to the Framework](#31-connecting-additional-services-to-the-framework)
+32. [Beginner's Guide: The Whole Project Explained from Zero](#32-beginners-guide-the-whole-project-explained-from-zero)
+33. [Mid-Semester Submission and Plagiarism Check](#33-mid-semester-submission-and-plagiarism-check)
 
 ---
 
@@ -960,3 +966,369 @@ Not in Git (local only): `Friend-sample-report.pdf` (another student's report, u
 16. D. Taibi, K. Systä, "A Decomposition and Metric-Based Evaluation Framework for Microservices," arXiv:1908.08513, 2019.
 17. Z. Zou, Y. Yun, J. Sun, "Entropy method for determination of weight of evaluating indicators in fuzzy synthetic evaluation for water quality assessment," *Journal of Environmental Sciences*, 18(5), 1020–1023, 2006.
 18. N. Canbaz Horozlu, T. Serif, "A Multidimensional Decision-Support Framework for Software Quality Assessment in Agile Projects," *Information*, 17(7), 624, 2026, doi:10.3390/info17070624.
+
+---
+
+## 28. Project Completion Status and How to Present It
+
+### 28.1 Is the project complete?
+**No — and that is expected at mid-semester.** The approved plan runs until 5 November 2026. The first half (research, design, prototype, preliminary experiments) is complete; the second half (rigorous validation and improvements) remains.
+
+| Part | Status | Approx. completion |
+|---|---|---|
+| Research (problem, gap, literature, objectives) | Done | 100 % |
+| Framework design (model, formulas, AHP, levels) | Done | 100 % |
+| Implementation (prototype, engine, dashboard, tests) | Done | ~90 % |
+| Experiments | One run per scenario done | ~40 % |
+| Comparison with traditional monitoring | Preliminary | ~30 % |
+| Improvements found in testing | Planned | 0 % |
+| Final report and viva | Pending | 0 % |
+| **Overall** | | **≈ 60–65 %** |
+
+By objectives: **5 of 7 completed, 2 in progress** (Section 3.4).
+
+### 28.2 Recommended 15-minute presentation: "Done → Found → Next"
+1. **Problem and idea (2 min):** monitoring shows dozens of separate metrics; nobody can tell at a glance if the system is healthy or which service is at fault. The framework combines them into one Quality Index 0–100.
+2. **What has been done (5–6 min):** five completed deliverables — (1) quality model: 5 dimensions, 7 metrics, thresholds; (2) weighting: AHP, CR = 0.012, entropy and hybrid implemented; (3) working framework: all 5 modules, 17 tests passing; (4) prototype: 4 microservices, Prometheus, Grafana, fault injection, load tests on Docker; (5) preliminary experiments: 9 scenarios. Then the live demo (Section 29), or Grafana screenshot + `qaf assess` output as backup.
+3. **What was found (3 min):** in every failure the right service was identified; in 3 of 7 degraded scenarios static alerts did not fire while the QI did. Then the self-found weaknesses: averaging hides emergencies (memory 115 % still "Excellent"), blame goes partly to the caller (E5), and the stale-data bug that was found and fixed (stopped service scored 55.8 instead of 0). Showing self-discovered problems demonstrates genuine research.
+4. **What is left and the plan (3 min):**
+
+| Remaining work | Why | When |
+|---|---|---|
+| Repeat each experiment ≥ 3 times | Statistical reliability | October, weeks 1–2 |
+| Compare AHP vs entropy vs hybrid | Validate the weighting choice (objective 4) | October, week 2 |
+| Fix "averaging hides emergencies" | Weakness found in E8 | October, week 2 |
+| Dependency-aware blame | Weakness found in E5 | October, week 3 |
+| Structured comparison with Grafana alerts | Objective 7; supervisor's request | October, week 3 |
+| Kubernetes with autoscaling | Proper scalability testing | October, week 4 |
+| Final report and viva | Submission | 20 Oct – 5 Nov |
+
+Closing line: *"The framework is built and working; the second half is about validating it rigorously and improving the weaknesses my experiments revealed."*
+
+### 28.3 Phrases to use and avoid
+
+| Say | Avoid |
+|---|---|
+| "As per my plan, the design and prototype phases are complete." | "I haven't finished." |
+| "These are **preliminary** results from single runs." | Presenting single-run numbers as final proof |
+| "My experiments **revealed** two limitations, which I'll address next." | Hiding the weaknesses |
+| "Experimentation is **in progress**." | "I didn't have time." |
+| "This is a planned next step." | Claiming features that do not exist yet |
+
+**If asked "Why isn't it complete?":** "According to the approved plan, mid-semester covers design and prototype development, which are complete. Experimentation is in progress, and the remaining work — repeated runs, comparisons and improvements — is scheduled for the second half, finishing by 5 November."
+
+**Timeline caution:** the abstract's plan ends experimentation on 4 October. If asked: "Preliminary experiments were completed on schedule; they revealed design issues, so I extended validation to include improvements and repeated runs, still within the 5 November deadline." Agree the revised timeline with the supervisor.
+
+---
+
+## 29. Live Demo Script (Windows + VS Code)
+
+### 29.1 One-time preparation (the day before)
+- **Docker Desktop** installed and able to start.
+- **Python** with the `qaf` CLI: `pip install -e ".\qaf[dev]"` from `runtime-qaf` (once).
+- **VS Code** installed.
+- Internet for the **first** build only (Docker downloads Prometheus, Grafana, k6 images, ~1 GB).
+- Build everything once before demo day (first build 5–10 min; later starts take seconds).
+- Rehearse the full demo once, timing each step.
+
+### 29.2 Starting up on demo day
+1. **Start Docker Desktop** (Start menu → Docker Desktop) and wait for **"Engine running"** (~1 min).
+   - If you see `error during connect … open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified`, Docker Desktop is **not running** — start it, wait, and repeat the command.
+2. **Open VS Code → File → Open Folder…** → `C:\Users\ganes\OneDrive\Desktop\Mtech-project\PROJECT-Main`.
+3. **Terminal → New Terminal** (Ctrl + `) — PowerShell.
+4. Start the stack:
+   ```powershell
+   cd runtime-qaf
+   docker compose up -d --build
+   docker compose ps          # 7 containers Up: user, product, order, payment, prometheus, grafana, qaf
+   ```
+5. Open browser tabs: **Grafana** http://localhost:3000 (dashboard "Runtime Quality Assessment – Overview" opens directly, no login) and **Prometheus** http://localhost:9090/targets (all services UP).
+6. Start traffic in a **second terminal** (click **+** in the terminal panel), 25 users for 20 minutes:
+   ```powershell
+   cd runtime-qaf
+   docker compose run --rm k6 run -e PROFILE=medium --stage 30s:25 --stage 20m:25 /scripts/load.js
+   ```
+   Wait ~1 minute; Grafana fills in and everything shows **Excellent** (QI ≈ 98).
+
+### 29.3 Demo storyline (10–12 minutes)
+| # | Step | Command / action | Expected result |
+|---|---|---|---|
+| 1 | The problem (1 min) | Show Grafana's lower panels (latency, errors, CPU, memory) | "Many separate numbers — is it healthy? who is at fault?" |
+| 2 | The solution (1 min) | Grafana top panels; `qaf assess` | One QI ≈ 98, Excellent; table with dimensions, QI, level, loss share, recommendations |
+| 3 | AHP weights (1 min) | `qaf weights` | 0.301 / 0.265 / 0.186 / 0.159 / 0.089; CR 0.0124 → consistent |
+| 4 | Payment errors (3 min) | `qaf chaos payment --error-rate 0.3`, wait ~60 s, `qaf assess` | Payment and Order ≈ 72 (Fair), reliability 0, CRITICAL reliability → circuit breaker; Grafana turns yellow/orange. Reset: `qaf chaos payment --reset` |
+| 5 | Slow service (2 min) | `qaf chaos order --latency 800`, wait, `qaf assess` | Order performance 0, QI ≈ 70 (Fair), caching recommendation. Reset: `qaf chaos order --reset` |
+| 6 | Service crash (2 min) | `docker compose stop payment`, wait 30–60 s, `qaf assess` | Payment **0, Critical**; Order Poor; system ≈ 50 (Poor); Grafana red. Restore: `docker compose start payment` |
+| 7 | Key result (1 min) | Open `Stage4_Mid-Sem_Report.pdf`, Section 5.6 | 3 of 7 degraded scenarios: no static alert, but QI caught it and named the service |
+| 8 | Code quality (1 min) | `cd qaf`, `python -m pytest -q`, `cd ..`; show folders in Explorer | 17 passed; `services/`, `qaf/qaf/`, `qaf/config/qaf.yaml` |
+
+### 29.4 Shutting down
+Second terminal: **Ctrl + C** (stops k6). First terminal: `docker compose down`.
+
+### 29.5 Demo tips
+- **Expect ~1 minute delay** after injecting a fault (1-min rate window, 2-min median lookback). Say: "It averages over a window so short spikes don't cause false alarms."
+- **Always reset faults** between demos.
+- **Backup plan:** if Docker fails, show the report figures and the real CSV results in `experiments/results/`.
+- **Close heavy apps** before the demo; Docker plus load testing uses a lot of CPU on this laptop.
+
+---
+
+## 30. Explaining the AHP Output to an Examiner
+
+### 30.1 The output
+```
+  performance  0.301
+  reliability  0.265
+  availability 0.186
+  efficiency   0.159
+  scalability  0.089
+  lambda_max=5.0555  CI=0.0139  CR=0.0124  -> consistent (CR < 0.10)
+```
+
+### 30.2 One-line answer
+> "These are the weights of the five quality dimensions in my Quality Index formula. I derived them with AHP from pairwise comparisons, and the consistency ratio of 0.012 shows my comparisons are logically consistent, because it is well below Saaty's limit of 0.10."
+
+### 30.3 What each line means
+| Output | Meaning |
+|---|---|
+| performance 0.301 | Performance contributes 30.1 % of the QI |
+| reliability 0.265 | Reliability (error rate) 26.5 % |
+| availability 0.186 | Availability (uptime) 18.6 % |
+| efficiency 0.159 | CPU and memory use 15.9 % |
+| scalability 0.089 | Scalability (queueing) 8.9 % |
+| weights sum to 1.0 | So the QI stays between 0 and 100 |
+
+They are used directly in **QI = 0.301·P + 0.265·R + 0.186·A + 0.159·E + 0.089·S**.
+
+### 30.4 How AHP produced them
+**Step 1 — pairwise comparisons** on Saaty's 1–9 scale (1 = equal, 3 = moderately more important, 9 = extremely more important); matrix in Section 8.2. The lower half holds reciprocals (Availability vs Performance = 1/2).
+
+**Step 2 — weights.** The program uses the **principal eigenvector** (normalised). Hand check with the **geometric-mean method**:
+
+| Row | Product of row | 5th root | Weight (÷ 5.434) |
+|---|---|---|---|
+| Performance | 1·1·2·2·3 = 12 | 1.644 | 0.303 |
+| Reliability | 1·1·1·2·3 = 6 | 1.431 | 0.263 |
+| Availability | ½·1·1·1·2 = 1 | 1.000 | 0.184 |
+| Efficiency | ½·½·1·1·2 = 0.5 | 0.871 | 0.160 |
+| Scalability | ⅓·⅓·½·½·1 = 1/36 | 0.488 | 0.090 |
+| | | sum = 5.434 | |
+
+These match the program's eigenvector weights; small differences are expected.
+
+**Step 3 — consistency.**
+
+| Value | Formula | Result | Meaning |
+|---|---|---|---|
+| λmax | Largest eigenvalue | 5.0555 | Perfectly consistent 5×5 matrix would give exactly 5 |
+| CI | (λmax − n)/(n − 1) = (5.0555 − 5)/4 | 0.0139 | Distance from perfect consistency |
+| RI | Saaty's random index, n = 5 | 1.12 | Average CI of random matrices |
+| CR | CI / RI = 0.0139 / 1.12 | 0.0124 | ≈ 1.2 % as inconsistent as random judgements |
+
+Rule: **CR < 0.10 is acceptable**; 0.0124 is far below. Quick λmax check with the Performance row: (1·0.301 + 1·0.265 + 2·0.186 + 2·0.159 + 3·0.089) ÷ 0.301 = 1.523 ÷ 0.301 ≈ 5.06.
+
+### 30.5 Why this order of importance
+| Rank | Dimension | Justification |
+|---|---|---|
+| 1 | Performance | Users notice slowness first; latency is the first golden signal |
+| 2 | Reliability | Failed requests (e.g. failed payment) lose business directly |
+| 3 | Availability | Critical, but outages are rarer and overlap with reliability |
+| 4 | Efficiency | High CPU/memory is a warning sign, not yet a user-visible failure |
+| 5 | Scalability | Predictor of future problems under load |
+
+Close to the outline's intuitive 30/25/20/15/10 split; AHP made it consistent and justifiable.
+
+### 30.6 Follow-up questions
+- **"Aren't the weights subjective?"** — Yes, expert-based; that is why consistency is checked. The Entropy Weight Method (objective) and a hybrid are implemented; their comparison is second-half work.
+- **"What if CR > 0.10?"** — The judgements would be inconsistent and must be revised until CR < 0.10; a unit test checks detection of an inconsistent matrix.
+- **"Why not equal weights?"** — Equal weights would treat a CPU warning like failed payments; AHP encodes business priorities.
+- **"Can weights be changed?"** — Yes; edit `ahp_matrix` in `qaf.yaml`; weights and CR are recomputed automatically.
+- **"What is RI?"** — Saaty's Random Index, the average CI of randomly generated matrices of the same size; 1.12 for n = 5.
+
+Tip: show `runtime-qaf/qaf/config/qaf.yaml` (`ahp_matrix`) in VS Code to prove the weights come from a visible, editable matrix.
+
+---
+
+## 31. Connecting Additional Services to the Framework
+
+### 31.1 Principle
+The framework never talks to services directly; it reads everything from Prometheus:
+```
+Your service ──/metrics──► Prometheus ──PromQL──► QAF engine ──► QI, level, blame, recommendations
+```
+Adding a service needs **no framework code change** — three things: the service exposes metrics, Prometheus scrapes it, QAF config lists it.
+
+### 31.2 Step 1 — the service exposes the expected metrics
+| Metric | Type | Labels | Used for |
+|---|---|---|---|
+| `http_request_duration_seconds` | histogram (with buckets) | service, status, route, method | p50/p95/p99 and mean latency |
+| `http_requests_total` | counter | service, status | throughput, 5xx error rate |
+| `process_cpu_seconds_total` | counter | service | CPU % |
+| `process_resident_memory_bytes` | gauge | service | memory % |
+
+For Node.js, reuse `services/src/common.js`:
+```js
+const { createService } = require('./common');
+const { app, start } = createService('inventory');   // sets label service="inventory"
+app.get('/stock/:id', (req, res) => res.json({ id: req.params.id, qty: 42 }));
+start(3005);
+```
+Other languages: standard Prometheus client libraries (prom-client, prometheus_client for Python, Micrometer for Java — see limitations).
+
+### 31.3 Step 2 — Prometheus scrapes it (`monitoring/prometheus/prometheus.yml`)
+```yaml
+  - job_name: microservices
+    honor_labels: true
+    static_configs:
+      # ...existing user/product/order/payment...
+      - targets: ["inventory:3005"]
+        labels: { service: inventory }
+```
+The `service` label is what QAF groups by; it also gives the `up` series (availability) its service name.
+
+### 31.4 Step 3 — QAF knows about it (`qaf/config/qaf.yaml`)
+```yaml
+services:
+  inventory: { url: http://localhost:3005, weight: 0.10 }
+```
+`weight` = business importance in the system QI (renormalised, need not sum to 1); `url` only for `qaf chaos`.
+
+### 31.5 Step 4 — run and verify
+Add it to `docker-compose.yml` (same 0.5 CPU / 256 MB limits), then:
+```bash
+docker compose up -d --build inventory
+docker compose restart prometheus qaf
+qaf assess
+```
+http://localhost:9090/targets must show it **UP**; after a minute of traffic it appears in `qaf assess` and Grafana.
+
+### 31.6 Monitoring existing services (e.g. at the organisation)
+If services are already scraped by an existing Prometheus, skip steps 1–2: set `QAF_PROMETHEUS_URL=http://your-prometheus:9090`, set `job:` in `qaf.yaml`, and make sure each series has a `service` label (rename e.g. `app` with a relabel rule). On Kubernetes, replace static targets with `kubernetes_sd_configs` so new pods are discovered automatically.
+
+### 31.7 Current limitations for arbitrary services (candidate second-half improvements)
+1. **Metric names are hard-coded** in `collector.py`. Spring Boot (Micrometer) uses `http_server_requests_seconds_bucket` and `process_cpu_usage` (a ratio), so a Spring Boot service would currently get no latency/CPU scores. Fix: query presets per technology (nodejs, spring-boot, python) in `qaf.yaml`.
+2. **Resource limits are global** (`resources`: 0.5 CPU / 256 MB for all). Fix: per-service limits or read from `kube_pod_container_resource_limits`.
+3. **Unlisted services get weight 1.0** in the system QI (≈ 3× order's 0.35), distorting it. Fix: default to the mean weight or score only listed services.
+4. **Static targets** must be edited by hand. Fix: Kubernetes service discovery.
+
+---
+
+## 32. Beginner's Guide: The Whole Project Explained from Zero
+
+### 32.1 The world this project lives in
+**Microservice.** Instead of one big program, a company splits its application into many small programs, each doing one job. Our demo shop has User (customers), Product (prices), Payment (charging) and Order (checkout, which calls the other three). If any one is slow or broken, a purchase suffers.
+
+**Metric.** A measurement taken repeatedly while the program runs — like a hospital patient's vital signs:
+
+| Hospital patient | Microservice |
+|---|---|
+| Heart rate | Response time |
+| Blood pressure | CPU usage |
+| Temperature | Memory usage |
+| Is the patient conscious? | Is the service up (available)? |
+| Failed breaths | Failed requests (errors) |
+
+### 32.2 What already existed vs what we built
+**Existing free tools (used, not built):**
+
+| Tool | What it is | Analogy |
+|---|---|---|
+| Prometheus | Visits every service every 5 s, collects its numbers, stores them with timestamps | Machine recording vital signs |
+| Grafana | Draws charts from Prometheus data | Screens showing the graphs |
+| Docker | Runs each service in an isolated container with limits (0.5 CPU, 256 MB) | Separate hospital rooms |
+| k6 | Creates fake customers (5 to 150) to load the system | Treadmill stress test |
+| prom-client | Library inside each service that counts and times requests | Sensors on the patient |
+
+The gap: Grafana shows dozens of separate graphs, Prometheus has the data, but **nobody says what it means** — a hospital screen full of numbers with **no doctor**.
+
+**What we built:**
+
+| Built by us | Language | Purpose |
+|---|---|---|
+| 4 demo services | Node.js | Realistic test system that can be made "sick" on purpose (fault injection) |
+| **QAF framework** (research contribution) | Python | **The doctor**: reads Prometheus, judges the data, gives one health score (QI) |
+| Grafana dashboard | Configuration | Shows the QI in green/yellow/red |
+| Experiments | Script | 9 scenarios: normal, busy, and different "illnesses" |
+
+### 32.3 The journey of the data
+```
+ 4 services ──► Prometheus ──► OUR FRAMEWORK: collect → clean → score → combine → recommend ──► QI + advice
+ (produce        (collects,                                                                        (terminal,
+  numbers)        stores)                                                                           Grafana, CSV)
+```
+- **Step 0 — services produce numbers** (existing library): each request's duration and success; CPU and memory; exposed at e.g. `http://localhost:3001/metrics`.
+- **Step 1 — collection:** Prometheus scrapes every 5 s; our **M1 Collector** asks Prometheus every 15 s for the last 2 minutes per service using **PromQL** (e.g. "the time below which 95 % of requests finish").
+- **Step 2 — cleaning (M2):** throw away crazy spikes (outliers); take the **median** of the 2 minutes; treat missing data as "unknown", not 0; if a service is down *right now*, ignore its old healthy numbers.
+- **Step 3 — scoring (M3):** each of the **7 metrics** becomes a 0–100 score; grouped into **5 dimensions**.
+- **Step 4 — combining (M4):** weighted sum → **QI**; level; system QI; blame.
+- **Step 5 — advice (M5):** rules → recommendations.
+
+### 32.4 The 7 metrics and 5 dimensions in plain words
+| # | Metric | Plain meaning |
+|---|---|---|
+| 1 | p95 response time | 95 % of customers got an answer faster than this — captures the slow experiences |
+| 2 | Average response time | Typical speed |
+| 3 | Error rate | % of requests that failed |
+| 4 | Availability | % of time the service was alive |
+| 5 | CPU usage | % of allowed processor power used |
+| 6 | Memory usage | % of allowed memory used |
+| 7 | Tail ratio | Slowest ÷ typical requests; growing = requests waiting in a queue (overload) |
+
+| Dimension | Question it answers | Metrics |
+|---|---|---|
+| Performance | Is it fast? | #1 (60 %) + #2 (40 %) |
+| Reliability | Does it work correctly? | #3 |
+| Availability | Is it alive? | #4 |
+| Efficiency | Does it use resources sensibly? | #5 (50 %) + #6 (50 %) |
+| Scalability | Can it handle more load? | #7 |
+
+**Normalisation** works like exam marks: different subjects are converted to marks out of 100 so they can be added. Between the good and bad limits (Section 7.1) the score falls in a straight line — e.g. p95 = 550 ms is halfway between 100 and 1000 ms → score 50.
+
+### 32.5 Worked example from the experiments (E3, 100 users, Order service)
+| Dimension | Score | × Weight | = Points |
+|---|---|---|---|
+| Performance | 49.3 (p95 696 ms) | × 0.301 | 14.8 |
+| Reliability | 100 (no errors) | × 0.265 | 26.5 |
+| Availability | 100 | × 0.186 | 18.6 |
+| Efficiency | 82.2 (CPU 57 %) | × 0.159 | 13.1 |
+| Scalability | 14.1 (heavy queueing) | × 0.089 | 1.3 |
+| **QI** | | | **74.2 → Fair** |
+
+### 32.6 AHP, entropy and hybrid in plain words
+- **AHP — "ask an expert, in pairs".** Ranking five things at once is hard; comparing two at a time is easy ("Performance vs Scalability? Performance, 3 times"). The 5×5 table of answers is turned into weights by an eigenvector. The **consistency ratio** checks for self-contradiction (A > B, B > C, but C > A); it must be < 0.10, ours is 0.012. Strength: reflects business priorities. Weakness: based on human opinion.
+- **Entropy Weight Method — "let the data decide".** A dimension that changes a lot between services or situations carries more information and gets more weight; one that is always the same gets little weight (e.g. availability always 100 % → low weight; performance varying a lot → high weight). Strength: objective. Weakness: ignores business importance (availability could get a tiny weight just because nothing crashed during the test).
+- **Hybrid — "best of both".** Weight = 50 % AHP + 50 % entropy.
+
+| Method | Who decides | Status |
+|---|---|---|
+| AHP | Expert | Implemented, **used for all results** |
+| Entropy | Data | Implemented; comparison planned |
+| Hybrid | Both | Implemented; comparison planned |
+
+### 32.7 What the index is used for
+| Use | Example |
+|---|---|
+| Instant health check | "System 98, Excellent" instead of reading 40 graphs |
+| Find the culprit | "Payment QI 0, Critical; it causes most of the loss" |
+| Catch hidden problems | Under 100 users no alarm fired, yet QI dropped to Fair (3 of 7 degraded scenarios) |
+| Compare deployments | "Version 2 has QI 91, version 1 had 96 — the release made things worse" |
+| Track trends | Daily/weekly QI shows improvement or degradation |
+| Simpler alerting | One rule "QI < 60" instead of dozens of metric rules |
+| Guide the fix | Recommendations point to the likely type of fix |
+| Management reporting | "Quality 95/100" understood without technical knowledge |
+
+The QI is visible in three places: the terminal (`qaf assess`), the Grafana dashboard (the framework publishes the QI back into Prometheus), and CSV files (`qaf record`).
+
+### 32.8 The whole project in 30 seconds
+> "Companies run software as many small services. Tools like Prometheus collect dozens of numbers about them, and Grafana draws graphs — but nobody combines them into an answer. I built a framework that acts like a doctor: it collects 7 metrics from Prometheus, cleans them, converts each to a 0–100 score, groups them into 5 dimensions — performance, reliability, availability, efficiency, scalability — and combines them with weights decided by AHP into one Quality Index. It labels health from Excellent to Critical, finds which service is to blame, and suggests fixes. I tested it on 4 demo services with 9 scenarios, and it caught problems that normal alerts missed."
+
+---
+
+## 33. Mid-Semester Submission and Plagiarism Check
+
+- **Submission:** the mid-semester report was uploaded on the BITS portal (S1-26_DISSERTATION – MID SEM) on **27 Sep 2026, 12:56 AM IST**: 27 pages, 6,022 words, title prefixed "QAF :".
+- **Turnitin similarity: 4 % overall** — 3 % internet sources, 1 % publications, 1 % student papers; 17 sources, **none above 1 %**; bibliography and quoted text excluded. Matches are scattered standard phrases (e.g. "Analytic Hierarchy Process"), no copied passages. The report contains no AI-writing score.
+- **Is a plagiarism report mandatory at mid-semester?** Not found as a requirement in BITS guidelines; the **Originality Similarity Index (OSI) report is required with the final report** before the final presentation. BITS provides **DrillBit** (via the library/supervisor). Confirm current-semester rules in the SEZG628T course handout or with the supervisor.
+- **Mid-semester evaluation sheet:** usually filled and signed by the supervisor and uploaded with the report — check the course page.
+- The Turnitin PDF is kept locally (`2024tm93686_Mid.pdf`) and excluded from Git (contains the submission ID).
+- **Note on authorship:** report text was drafted with AI assistance from the student's own design, code and results; check the programme's policy on AI-assisted writing and be able to explain every part in the viva.
